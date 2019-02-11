@@ -14,11 +14,11 @@ after_suceess:
   - docker build -t rahuljuneja/multi-server -f .client/Dockerfile ./server  
   - docker build -t rahuljuneja/multi-worker -f .client/Dockerfile ./worker
 
-#Login to docker CLI
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #Login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-#Take these docker images and push it to Docker hub
-- docker push rahuljuneja/multi-client
-- docker push rahuljuneja/multi-nginx
-- docker push rahuljuneja/multi-server
-- docker push rahuljuneja/multi-worker
+  #Take these docker images and push it to Docker hub
+  - docker push rahuljuneja/multi-client
+  - docker push rahuljuneja/multi-nginx
+  - docker push rahuljuneja/multi-server
+  - docker push rahuljuneja/multi-worker
