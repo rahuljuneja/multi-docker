@@ -3,16 +3,16 @@ services:
   - docker
 
 before_install:
-  - docker build -t rahuljuneja/react-test -f .client/Dockerfile.dev ./client
+  - docker build -t rahuljuneja/react-test -f ./client/Dockerfile.dev ./client
   
 script:
   - docker run rahuljuneja/react-test npm test -- --coverage
 
 after_suceess:
-  - docker build -t rahuljuneja/multi-client -f .client/Dockerfile ./client
-  - docker build -t rahuljuneja/multi-nginx -f .client/Dockerfile ./nginx
-  - docker build -t rahuljuneja/multi-server -f .client/Dockerfile ./server  
-  - docker build -t rahuljuneja/multi-worker -f .client/Dockerfile ./worker
+  - docker build -t rahuljuneja/multi-client -f ./client/Dockerfile ./client
+  - docker build -t rahuljuneja/multi-nginx -f ./client/Dockerfile ./nginx
+  - docker build -t rahuljuneja/multi-server -f ./client/Dockerfile ./server  
+  - docker build -t rahuljuneja/multi-worker -f ./client/Dockerfile ./worker
 
   #Login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
